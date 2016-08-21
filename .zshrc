@@ -101,6 +101,13 @@ alias ed='emacs --daemon'
 alias vc='/Applications/Visual\ Studio\ Code.app/Contents/MacOS/Atom'
 alias ec='/usr/local/Cellar/emacs-mac/emacs-24.5-z-mac-5.11/bin/emacsclient -t'
 alias eg='/usr/local/Cellar/emacs-mac/emacs-24.5-z-mac-5.11/bin/emacsclient -c'
+alias e='nvim'
+# 
+# Aliases for fzf
+#
+alias f='fzf'
+alias ft='fzf-tmux'
+
 
 export PATH=$PATH:$HOME/dev
 export PATH=$PATH:$HOME/.cargo/bin
