@@ -1,7 +1,7 @@
 
 " vim: set foldmethod=marker foldlevel=0:
 " ============================================================================
-" .vimrc of Andrei Stanciu based on customizations of Junegunn Choi {{{
+" .vimrc of Junegunn Choi {{{
 " ============================================================================
 
 let s:darwin = has('mac')
@@ -129,6 +129,12 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " NeoMake plugin
 Plug 'neomake/neomake'
+
+" deoplete completion plugin
+function! DoRemote(arg)
+  UpdateRemotePlugins
+endfunction
+Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 
 call plug#end()
 endif
@@ -1661,6 +1667,11 @@ autocmd! BufWritePost * Neomake
 "autocmd! BufWritePost * Neomake!
 set makeprg=cargo\ rustc\ -Zno-trans
 
+" ----------------------------------------------------------------------------
+" enable deoplete completion
+" ----------------------------------------------------------------------------
+"let g:deoplete#enable_at_startup = 1
+
 " }}}
 " ============================================================================
 " FZF {{{
@@ -1775,10 +1786,15 @@ endif
 " Extra settings {{{
 " ============================================================================
 " Rust Source code location for Racer completion engine
-let g:ycm_rust_src_path = '~/dev/rust/src/'
+let g:ycm_rust_src_path = '/Users/stanciua/dev/rust/src/'
+let g:rustfmt_autosave = 1
 
 " change the colorscheme to Tomorrow-Night-Bright
 colorscheme Tomorrow-Night-Bright
+
+" reload .vimrc after change
+autocmd BufWritePost init.vim source %
+
 
 " }}}
 " ============================================================================
