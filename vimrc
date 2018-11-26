@@ -123,7 +123,7 @@ Plug 'scrooloose/syntastic'
 "Plug 'scrooloose/syntastic', { 'on': 'SyntasticCheck' }
 
 " YouCompleteMe plugin
-Plug 'Valloric/YouCompleteMe'
+"Plug 'Valloric/YouCompleteMe'
 " Vim-airline plugins
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -135,6 +135,7 @@ function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+Plug 'arcticicestudio/nord-vim'
 
 call plug#end()
 endif
@@ -1790,7 +1791,7 @@ let g:ycm_rust_src_path = '/Users/stanciua/dev/rust/src/'
 let g:rustfmt_autosave = 1
 
 " change the colorscheme to Tomorrow-Night-Bright
-colorscheme Tomorrow-Night-Bright
+colorscheme nord
 
 " reload .vimrc after change
 autocmd BufWritePost init.vim source %
