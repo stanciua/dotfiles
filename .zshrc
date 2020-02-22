@@ -89,11 +89,6 @@ export LC_ALL=en_US.UTF-8
 export TERM=xterm-256color
 
 #
-# Racer path setup
-#
-export RUST_SRC_PATH=/Users/stanciua/dev/rust/src
-
-#
 # Aliases for emacs daemon and client
 #
 alias ed='emacs --daemon'
