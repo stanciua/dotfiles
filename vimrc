@@ -20,6 +20,7 @@ else
 endif
 " My plugins
 
+Plug 'morhetz/gruvbox'
 Plug 'junegunn/vim-easy-align',       { 'on': ['<Plug>(EasyAlign)', 'EasyAlign'] }
 Plug 'junegunn/vim-github-dashboard', { 'on': ['GHDashboard', 'GHActivity']      }
 Plug 'junegunn/vim-emoji'
@@ -119,11 +120,9 @@ endif
 Plug 'chrisbra/unicode.vim', { 'for': 'journal' }
 
 " Lint
-Plug 'scrooloose/syntastic'
+" Plug 'scrooloose/syntastic'
 "Plug 'scrooloose/syntastic', { 'on': 'SyntasticCheck' }
 
-" YouCompleteMe plugin
-"Plug 'Valloric/YouCompleteMe'
 " Vim-airline plugins
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -138,6 +137,9 @@ Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 Plug 'arcticicestudio/nord-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'morhetz/gruvbox'
+" Support for Unison language
+Plug 'unisonweb/unison', { 'rtp': 'editor-support/vim' }
+Plug 'cespare/vim-toml'
 
 call plug#end()
 endif
@@ -1928,6 +1930,8 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+" sane pasting
+xnoremap p pgvy
 
 " }}}
 " ============================================================================
