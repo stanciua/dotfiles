@@ -102,3 +102,30 @@ export EDITOR='vim'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
+
+eval "$(starship init zsh)"
+
+# opam configuration
+test -r /Users/stanciua/.opam/opam-init/init.zsh && . /Users/stanciua/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+export PATH=/Users/stanciua/utils/oni2/_release:$PATH
+export PATH=/Users/stanciua/go/bin:$PATH
+export PATH=/Users/stanciua/.nimble/bin:$PATH
+export PATH=/usr/local/share/dotnet:$PATH
+
+export DOTNET_ROOT=$HOME/dotnet
+export PATH=$PATH:$HOME/dotnet
+
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+export PATH=/Users/stanciua/zig:$PATH
+export PATH=/Users/stanciua/zls/zig-out/bin:$PATH
+
+alias luamake=/Users/stanciua/lua-language-server/3rd/luamake/luamake
+export PATH=/Users/stanciua/lua-language-server/bin/macOS:$PATH
+
+export PATH=/usr/local/opt/llvm/bin:$PATH
+
+export GOPATH=$HOME/go
+alias kubectl="minikube kubectl --"

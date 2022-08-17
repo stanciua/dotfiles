@@ -140,6 +140,8 @@ Plug 'morhetz/gruvbox'
 " Support for Unison language
 Plug 'unisonweb/unison', { 'rtp': 'editor-support/vim' }
 Plug 'cespare/vim-toml'
+Plug 'ayu-theme/ayu-vim'
+Plug 'ziglang/zig.vim'
 
 call plug#end()
 endif
@@ -386,7 +388,7 @@ endif
 inoremap <C-Q>     <esc>:q<cr>
 nnoremap <C-Q>     :q<cr>
 vnoremap <C-Q>     <esc>
-nnoremap <Leader>q :q<cr>
+"nnoremap <Leader>q :q<cr>
 nnoremap <Leader>Q :qa!<cr>
 
 " Tag stack
@@ -442,6 +444,7 @@ if has('nvim')
   tnoremap <a-b> <esc>b
   tnoremap <a-d> <esc>d
   tnoremap <a-f> <esc>f
+  tnoremap jk <c-\><c-n>
 endif
 
 " ----------------------------------------------------------------------------
@@ -1795,7 +1798,8 @@ let g:ycm_rust_src_path = '/Users/stanciua/dev/rust/src/'
 let g:rustfmt_autosave = 1
 
 " change the colorscheme to Tomorrow-Night-Bright
-colorscheme gruvbox
+let ayucolor="mirage" 
+colorscheme ayu
 
 " reload .vimrc after change
 autocmd BufWritePost init.vim source %
@@ -1932,6 +1936,14 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " sane pasting
 xnoremap p pgvy
+
+" set relative line numbers
+set rnu
+
+" enable termguicolors
+if has('termguicolors')
+  set termguicolors
+endif
 
 " }}}
 " ============================================================================
