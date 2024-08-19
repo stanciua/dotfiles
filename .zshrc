@@ -1,18 +1,19 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/utils/graalvm/Contents/Home/bin:$HOME/bin:/usr/local/bin:$PATH
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+autoload -Uz +X compinit
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/stanciua/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-#ZSH_THEME="bullet-train"
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# a theme from this variable instead of looking in $ZSH/themes/
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
@@ -23,11 +24,16 @@ export ZSH="/Users/stanciua/.oh-my-zsh"
 # Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+# zstyle ':omz:update' frequency 13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -39,6 +45,9 @@ export ZSH="/Users/stanciua/.oh-my-zsh"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
 # COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
@@ -58,26 +67,23 @@ export ZSH="/Users/stanciua/.oh-my-zsh"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  git zsh-autosuggestions zsh-syntax-highlighting docker
-)
+
+plugins=(zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=180'
 
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-export LANG=en_US.UTF-8
+# export LANG=en_US.UTF-8
 
-export EDITOR='vim'
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
@@ -88,9 +94,6 @@ export EDITOR='vim'
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -100,32 +103,32 @@ export EDITOR='vim'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export DOTNET_CLI_TELEMETRY_OPTOUT=1
+# Zsh History
+export HISTFILE=~/.zsh_history
+export HISTFILESIZE=99999
+export HISTSIZE=99999
+
+# Skip cmds w/ leading space from history
+setopt histignorespace
+
+# Share history across multiple Zsh sessions
+setopt SHARE_HISTORY
+
+# Append to history (no overwrite of other session's history file)
+setopt APPEND_HISTORY
+
+# Write to history file immediately (not at shell exit)
+setopt INC_APPEND_HISTORY
+
+# Oh My Zsh History Size
+export SAVEHIST=$HISTSIZE
+
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=180'
 
 eval "$(starship init zsh)"
 
-# opam configuration
-test -r /Users/stanciua/.opam/opam-init/init.zsh && . /Users/stanciua/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-export PATH=/Users/stanciua/utils/oni2/_release:$PATH
-export PATH=/Users/stanciua/go/bin:$PATH
-export PATH=/Users/stanciua/.nimble/bin:$PATH
-export PATH=/usr/local/share/dotnet:$PATH
+export PATH=/opt/sublime_merge:/home/epsdev/.local/bin:$PATH
 
-export DOTNET_ROOT=$HOME/dotnet
-export PATH=$PATH:$HOME/dotnet
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-export PATH=/Users/stanciua/zig:$PATH
-export PATH=/Users/stanciua/zls/zig-out/bin:$PATH
-
-alias luamake=/Users/stanciua/lua-language-server/3rd/luamake/luamake
-export PATH=/Users/stanciua/lua-language-server/bin/macOS:$PATH
-
-export PATH=/usr/local/opt/llvm/bin:$PATH
-
-export GOPATH=$HOME/go
-alias kubectl="minikube kubectl --"
