@@ -1,5 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+
 autoload -Uz +X compinit
 
 # Path to your oh-my-zsh installation.
@@ -129,6 +130,13 @@ eval "$(starship init zsh)"
 
 export PATH=/opt/sublime_merge:/home/epsdev/.local/bin:$PATH
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
 
-
+# Emacs is my editor
+export ALTERNATE_EDITOR=""
+export EDITOR="emacsclient -t"
+export VISUAL="emacsclient -c -a emacs"
+e() {
+    emacsclient -t "$@"
+}
