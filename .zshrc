@@ -128,15 +128,11 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=180'
 
 eval "$(starship init zsh)"
 
-export PATH=/opt/sublime_merge:/home/epsdev/.local/bin:$PATH
+export PATH=/opt/sublime_merge:$HOME/.local/bin:$PATH
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 
-# Emacs is my editor
 export ALTERNATE_EDITOR=""
-export EDITOR="emacsclient -t"
-export VISUAL="emacsclient -c -a emacs"
-e() {
-    emacsclient -t "$@"
-}
+export EDITOR="vim"
+
